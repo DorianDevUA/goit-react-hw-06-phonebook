@@ -2,6 +2,7 @@ import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
 import { getShowModal } from '../../redux/modal/selectors';
 import { toggleModal } from '../../redux/modal/actions';
+import { addContact } from '../../redux/contacts/actions';
 import { Field, Formik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import {
@@ -33,8 +34,13 @@ const ContactForm = () => {
   const handleSubmit = (values, actions) => {
     console.log('values', values);
     console.log('actions', actions);
-    actions.resetForm();
 
+    const { name, number } = values;
+    const { resetForm } = actions;
+
+    resetForm();
+
+    dispatch(addContact(name, number));
     dispatch(toggleModal(showModal));
   };
 
