@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleModal } from '../../redux/modal/actions';
+import Filter from '../Filter';
 import Modal from '../Modal';
 import ContactForm from '../ContactForm';
 import ContactList from '../ContactList';
@@ -15,11 +16,10 @@ const App = () => {
           <ContactForm />
         </Modal>
       )}
+      <Filter />
       <button type="button" onClick={() => dispatch(toggleModal(showModal))}>
         Toggle Modal
       </button>
-      <h1>Vite + React + Redux</h1>
-      <p>Click on the Vite and React logos to learn more</p>
       <ContactList />
     </>
   );
