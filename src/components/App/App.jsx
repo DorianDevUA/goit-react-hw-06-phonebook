@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import Modal from '../Modal';
 import { toggleModal } from '../../redux/modal/actions';
+import ContactForm from '../ContactForm';
 
 const App = () => {
   const { showModal } = useSelector(state => state.modal);
@@ -10,13 +11,7 @@ const App = () => {
     <>
       {showModal && (
         <Modal>
-          <p>This text from Modal</p>
-          <button
-            type="button"
-            onClick={() => dispatch(toggleModal(showModal))}
-          >
-            Toggle Modal
-          </button>
+          <ContactForm />
         </Modal>
       )}
       <button type="button" onClick={() => dispatch(toggleModal(showModal))}>
