@@ -8,9 +8,9 @@ const ContactList = () => {
 
   return (
     <StyledList>
-      {contacts.map(({ id, name, number }) => (
-        <Contact key={id}>
-          <ContactItem name={name} number={number} />
+      {contacts.map(contact => (
+        <Contact key={contact.id}>
+          <ContactItem contact={contact} />
         </Contact>
       ))}
     </StyledList>
