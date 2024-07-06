@@ -1,1 +1,1 @@
-export const getShowModal = state => state.modal.showModal;
+export const getContacts = state => state.contacts;
