@@ -1,5 +1,6 @@
 import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
+import { getContacts } from '../../redux/contacts/selectors';
 import { getShowModal } from '../../redux/modal/selectors';
 import { toggleModal } from '../../redux/modal/actions';
 import { addContact } from '../../redux/contacts/actions';
@@ -7,7 +8,9 @@ import { Field, Formik } from 'formik';
 import FormError from '../FormError';
 import * as Yup from 'yup';
 import {
+  Buttons,
   AddContactBtn,
+  CancelBtn,
   LabelTitle,
   StyledForm,
   StyledLabel,
@@ -25,15 +28,22 @@ const schema = Yup.object().shape({
     .required('Required'),
   number: Yup.string()
     .matches(phoneRegExp, 'Phone number is not valid')
-    .required(),
+    .required('Required'),
 });
 
 const ContactForm = () => {
+  const contacts = useSelector(getContacts);
   const showModal = useSelector(getShowModal);
   const dispatch = useDispatch();
 
   const nameImputId = nanoid();
   const numberImputId = nanoid();
+
+  const checkNameInContacts = name => {
+    const normalizedName = name.toLowerCase();
+
+    return contacts.some(({ name }) => name.toLowerCase() === normalizedName);
+  };
 
   const handleSubmit = (values, actions) => {
     console.log('values', values);
@@ -42,9 +52,15 @@ const ContactForm = () => {
     const { name, number } = values;
     const { resetForm } = actions;
 
-    resetForm();
+    const isNameExist = checkNameInContacts(name);
+
+    if (isNameExist) {
+      alert(`Контакт "${name}" вже існує!`);
+      return;
+    }
 
     dispatch(addContact(name, number));
+    resetForm();
     dispatch(toggleModal(showModal));
   };
 
@@ -67,7 +83,15 @@ const ContactForm = () => {
           <FormError name="number" />
         </StyledLabel>
 
-        <AddContactBtn type="submit">Add contact</AddContactBtn>
+        <Buttons>
+          <AddContactBtn type="submit">Add contact</AddContactBtn>
+          <CancelBtn
+            type="button"
+            onClick={() => dispatch(toggleModal(showModal))}
+          >
+            Cancel
+          </CancelBtn>
+        </Buttons>
       </StyledForm>
     </Formik>
   );
