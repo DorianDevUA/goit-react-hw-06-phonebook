@@ -1,26 +1,21 @@
 import styled from 'styled-components';
 import IconButton from '../IconButton';
 
-export const ContactCard = styled.div`
+export const Container = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
 `;
 
-export const ContactInfo = styled.ul``;
-
-export const ContactName = styled.li``;
-
 export const StyledIconBtn = styled(IconButton)`
-  background-color: inherit;
+  padding: 8px;
+
+  color: white;
+  background-color: rgb(76, 175, 80);
 
   border: none;
   border-radius: 50%;
   cursor: pointer;
-
-  &:hover {
-    color: red;
-  }
 
   svg {
     display: block;

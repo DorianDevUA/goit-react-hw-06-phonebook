@@ -1,7 +1,9 @@
 import { useDispatch } from 'react-redux';
 import { deleteContact } from '../../redux/contacts/actions';
 import { ImPhone, ImUser } from 'react-icons/im';
+import { MdOutlineClear } from 'react-icons/md';
 import { ContactCard } from './ContactItem.styled';
+import { StyledIconBtn } from './ContactItem.styled';
 
 const ContactItem = ({ contact: { id, name, number } }) => {
   const dispatch = useDispatch();
@@ -22,9 +24,14 @@ const ContactItem = ({ contact: { id, name, number } }) => {
           <span>{number}</span>
         </li>
       </ul>
-      <button type="button" onClick={handleDelete}>
-        delete
-      </button>
+
+      <StyledIconBtn
+        type="button"
+        onClick={handleDelete}
+        aria-label="Delete contact"
+      >
+        <MdOutlineClear size={24} />
+      </StyledIconBtn>
     </ContactCard>
   );
 };
