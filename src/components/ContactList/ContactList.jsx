@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
-import { getContacts } from '../../redux/contacts/selectors';
-import { getFilterValue } from '../../redux/filter/selectors';
+import { getFilterValue } from '../../redux/filterSlice';
+import { getContacts } from '../../redux/contactsSlice';
 import ContactItem from '../ContactItem';
 import { Contact, StyledList } from './ContactList.styled';
 

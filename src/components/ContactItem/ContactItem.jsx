@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/contacts/actions';
+import { deleteContact } from '../../redux/contactsSlice';
 import { ImPhone, ImUser } from 'react-icons/im';
 import { MdOutlineClear } from 'react-icons/md';
 import { ContactCard } from './ContactItem.styled';

@@ -2,8 +2,7 @@ import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getShowModal } from '../../redux/modal/selectors';
-import { toggleModal } from '../../redux/modal/actions';
+import { getShowModal, toggleModal } from '../../redux/modalSlice';
 import { Backdrop, ModalContent } from './Modal.styled';
 
 const rootModal = window.document.getElementById('root-modal');

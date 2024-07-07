@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { search } from '../../redux/filter/actions';
-import { getFilterValue } from '../../redux/filter/selectors';
+import { getFilterValue, search } from '../../redux/filterSlice';
 import { nanoid } from 'nanoid';
 import { LabelTitle } from './Filter.styled';
 

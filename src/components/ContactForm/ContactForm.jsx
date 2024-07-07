@@ -1,9 +1,7 @@
 import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts } from '../../redux/contacts/selectors';
-import { getShowModal } from '../../redux/modal/selectors';
-import { toggleModal } from '../../redux/modal/actions';
-import { addContact } from '../../redux/contacts/actions';
+import { addContact, getContacts } from '../../redux/contactsSlice';
+import { getShowModal, toggleModal } from '../../redux/modalSlice';
 import { Field, Formik } from 'formik';
 import FormError from '../FormError';
 import * as Yup from 'yup';

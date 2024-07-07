@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleModal } from '../../redux/modal/actions';
+import { toggleModal } from '../../redux/modalSlice';
 import { ImUserPlus } from 'react-icons/im';
 import Filter from '../Filter';
 import Modal from '../Modal';
