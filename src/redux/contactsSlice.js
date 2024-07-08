@@ -58,16 +58,11 @@ export const contactsSlice = createSlice({
   reducers: {
     addContact: {
       reducer(state, action) {
-        state.push(action.payload);
-      },
-      prepare(name, number) {
-        return {
-          payload: {
-            id: nanoid(),
-            name,
-            number,
-          },
-        };
+        state.push({
+          id: nanoid(),
+          name: action.payload.name,
+          number: action.payload.number,
+        });
       },
     },
     deleteContact(state, action) {

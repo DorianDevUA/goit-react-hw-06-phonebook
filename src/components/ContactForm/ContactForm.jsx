@@ -57,7 +57,7 @@ const ContactForm = () => {
       return;
     }
 
-    dispatch(addContact(name, number));
+    dispatch(addContact({ name, number }));
     resetForm();
     dispatch(toggleModal(showModal));
   };
